@@ -1,0 +1,340 @@
+* {
+	box-sizing: border-box;
+}
+
+@font-face {
+     font-family: "Minecraft";
+     src: url("../fonts/Minecraft.ttf") format("truetype");
+     font-weight: normal;
+     font-style: normal;
+}
+
+html {
+	/* Permet de définir la taille d'une case pour pouvoir s'en servir en tant qu'unité de base */
+	font-size: 64px;
+}
+
+body {
+	background-color: #D8EA93;
+}
+
+#title {
+	font-family: "Minecraft";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	padding: 8px;
+	font-size: 5vw;
+	border : 8px solid #80BC93;
+	border-width: 0 0 8px 0;
+	background-color: #7CD99F;
+	height: 6vw;
+}
+
+.container {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#board {
+	border : 10px solid #7EBB95;
+	margin: 0 auto 0 auto;
+	position: absolute;
+	top : 10px;
+	right : 0;
+	bottom : 0;
+	left : 0;
+	margin : auto;
+	height: 448px;
+	width: 704px;
+	background-image: url('../images/map.png');
+	border-radius: 10px;
+	box-sizing: content-box;
+}
+
+.case {
+	height: 1rem;
+	width: 1rem;
+	border: 1px solid black;
+}
+#board #character {
+	background-image: url('../images/aerelloth-walking.png');
+	background-size: 9rem;
+	position: absolute;
+	height: 1rem;
+	width: 1rem;
+	z-index: 2;
+	background-position: 0 0;
+	top: 0rem;
+	left: 0rem;
+}
+
+#board #character.down {
+	background-position: 0 2rem;
+}
+
+@keyframes walkDown {
+    from {background-position: 0rem 2rem;}
+    to {background-position: 9rem 2rem;}
+}
+
+#board #character.down.move {
+	animation: walkDown 0.5s steps(9) infinite;
+}
+
+#board #character.up {
+	background-position: 0 0;
+}
+
+#board #character.up.move {
+	/* à animer */
+	background-position: 1rem 1rem;
+	background-position: 3rem 1rem;
+}
+
+#board #character.right {
+	background-position: 0 1rem;
+}
+
+#board #character.right.move {
+	/* à animer */
+	background-position: 1rem 2rem;
+	background-position: 3rem 2rem;
+}
+
+#board #character.left {
+	background-position: 0 3rem;
+}
+
+#board #character.left.move {
+	/* à animer */
+	background-position: 1rem 3rem;
+	background-position: 3rem 3rem;
+}
+
+#board #coin {
+	background-image: url('../images/coin.png');
+	background-size: 0.6rem;
+	background-position: center;
+	position: absolute;
+	height: 1rem;
+	width: 1rem;
+	z-index: 1;
+	top: 0rem;
+	left: 0rem;
+	display: none;
+	background-repeat: no-repeat;
+}
+
+#panels {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: absolute;
+	top: 560px;
+	left: 0;
+	right: 0;
+	height: 50px;
+	width: 100%;
+	font-size: 0.5em;
+}
+
+#score, #timer, #mode, #arrows {
+	border : 5px solid #80BC93;
+	background-color: #7CD99F;
+	height: 50px;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	border-radius: 10px;
+	font-family: "Minecraft";
+	min-width: 100px;
+}
+
+#arrows {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 110px;
+	width: 120px;
+}
+
+#left-right {
+	margin: 0;
+	padding: 0;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+	width: 100px;
+}
+
+#arrows button {
+	height: 30px;
+	width: 30px;
+}
+#left-right button{
+	margin: 0;
+}
+
+#mode {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-around;
+}
+
+#mode button {
+	margin: 5px;
+	font-family: "Minecraft";
+	font-size: 0.6em;
+	border : 1px solid #80BC93;
+	background-color: #A4DC9A;
+	padding: 3px;
+	border-radius: 10px;
+}
+
+#mode button[disabled] {
+	background-color: #80BC93;
+	color: #63554C;
+}
+
+#mode button:hover {
+	cursor: pointer;
+	background-color: #80BC93;
+}
+
+#mode button[disabled]:hover {
+	cursor: default;
+	background-color: #80BC93;
+}
+
+p {
+	margin: 20px 10px;
+}
+
+@media screen and (max-width:1000px){
+	#board {
+		top: -20px;
+	}
+
+	#panels {
+		top: 460px;
+		height: 200px;
+		align-items: center;
+	}
+
+	#title {
+		font-size: 6vw;
+		height: 7vw;
+	}
+}
+
+@media screen and (max-width:800px){
+	#board {
+		top: -50px;
+	}
+
+	#panels {
+		flex-wrap: wrap;
+		top: 480px;
+		align-items: center;
+	}
+
+	#mode {
+		width: 75%;
+		margin: 0;
+	}
+
+	#title {
+		font-size: 7vw;
+		height: 9vw;
+	}
+
+}
+
+@media screen and (max-width:700px){
+	#panels {
+		top: 460px;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 300px;
+		align-items: center;
+	}
+
+	#score, #timer, #mode {
+		justify-content: space-around;
+		align-items: center;
+		width: 80%;
+	}
+	#score {
+		margin-bottom: 20px;
+	}
+
+	#arrows {
+		height: 100px;
+		width: 80px;
+	}
+
+	#arrows button {
+		height: 27px;
+		width: 27px;
+	}
+
+	#left-right {
+		width: 80px;
+	}
+
+	#title {
+		font-size: 7vw;
+		height: 10vw;
+	}
+}
+
+@media screen and (max-width:500px){
+	#board {
+		top: -100px;
+	}
+	#title {
+		height: 12vw;
+	}
+}
+
+@media screen and (max-width:400px){
+	#title {
+		height: 14vw;
+	}
+}
+
+@media screen and (max-width:350px){
+	#panels {
+		top: 370px;
+		font-size: 0.6em;
+	}
+	#timer, #modes, #score {
+		height: 50px;
+	}
+}
